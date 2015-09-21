@@ -7,26 +7,25 @@ public class quickSort {
 		if(start<end)
         {
             int key=array[start];
-            int i=start,j;
-            for(j=start+1;j<=end;j++)
+            int p=start,i;
+            for(i=start+1;i<=end;i++)
             {
-                if(array[j]<key)
+                if(array[i]<key)
                 {
-                    int temp=array[j];
-                    array[j]=array[i+1];
-                    array[i+1]=temp;
-                    i++;
+                    int temp=array[i];
+                    array[i]=array[p+1];
+                    array[p+1]=temp;
+                    p++;
                 }
             }
-            array[start]=array[i];
-            array[i]=key;
-            qSort(array, start, i-1);
-            qSort(array, i+1, end);
+            array[start]=array[p];
+            array[p]=key;
+            qSort(array, start, p-1);
+            qSort(array, p+1, end);
         }
 	}
 
-	
-	
+		
 	public static void main(String[] args)
     {
 		Random random = new Random();
@@ -34,7 +33,7 @@ public class quickSort {
 		for(int i=0; i<1000; i++){
 			array[i] = random.nextInt(10000);
 		}
-        qSort(array, 0, array.length-1);
+		qSort(array, 0, array.length-1);
         for(int i=0;i<array.length;i++)
         {
             System.out.println(array[i]);
